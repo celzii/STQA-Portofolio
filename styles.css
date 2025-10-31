@@ -1,0 +1,316 @@
+:root{
+  --bg1: #6a0dad;
+  --bg2: #b893ff;
+  --accent: #ffb6f1;
+  --card: rgba(255,255,255,0.98);
+  --text: #2b0633;
+  --muted: #5a3a5a;
+  --radius: 12px;
+  --max-width: 1100px;
+  --container-padding: 20px;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:linear-gradient(135deg,var(--bg1) 0%, #8c5bd6 35%, var(--bg2) 100%);color:var(--text);-webkit-font-smoothing:antialiased}
+.container{max-width:var(--max-width);margin:28px auto;padding:var(--container-padding)}
+.site-header{background:linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));padding:18px;border-radius:14px;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.12);margin-bottom:18px}
+.site-header.small{padding:12px}
+.header-grid{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.site-title{margin:0;font-weight:700;font-size:22px;color:#fff}
+.site-sub{margin:6px 0 0;font-weight:300;color:rgba(255,255,255,0.95)}
+.top-nav{display:flex;flex-wrap:wrap;gap:10px}
+.nav-card{display:inline-block;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));color:var(--accent);text-decoration:none;font-weight:600}
+.card, .content-card{background:var(--card);padding:22px;border-radius:14px;margin-top:8px; box-shadow: 0 8px 30px rgba(31, 12, 45, 0.18)}
+.hero{display:flex;flex-direction:column;gap:12px}
+.lead{color:var(--muted);margin-bottom:12px}
+.quick-links .btn{margin-right:10px}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#ffd7f8);color:#4a0830;text-decoration:none;font-weight:700}
+.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.12)}
+.resources ul{margin:0;padding-left:20px}
+.content-card article h2{color:#4a0b4d}
+pre{background:#faf6ff;padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(107,54,138,0.06)}
+code{font-family:"Roboto Mono", monospace;font-size:13px}
+.page-actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
+  padding:10px 14px;
+  background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius:12px;
+  box-shadow:0 10px 28px rgba(31,12,45,0.06);
+}
+.page-actions .btn{padding:8px 12px;border-radius:10px;font-weight:700}
+.page-actions .meta{color:var(--muted);font-size:0.95rem}
+.page-actions .btn + .btn{margin-left:8px}
+.back{color:#fff;text-decoration:none;font-weight:600}
+
+/* Index (home) — purple theme (scoped to body.home) */
+.home .site-header{background:linear-gradient(90deg,#6a0dad,#b893ff);color:#fff}
+.home .header-grid{align-items:center}
+.home .site-title{color:#fff;margin:0;font-size:24px}
+.home .site-sub{color:rgba(255,255,255,0.95)}
+.home .student-info{background:rgba(255,255,255,0.06);padding:8px 10px;border-radius:10px;text-align:right;color:#fff}
+.home .top-nav{display:none}
+.home .nav-card{background:linear-gradient(90deg,#7a4dd6,#b893ff);color:#fff;padding:8px 12px;border-radius:999px;box-shadow:0 8px 20px rgba(90,40,140,0.08);border:none}
+.home .nav-card:hover{transform:translateY(-3px)}
+
+.home .hero{background:linear-gradient(180deg,#f6f0ff,#fffafb);border-radius:16px;padding:28px;position:relative;overflow:hidden}
+.home .hero::before{content:"";position:absolute;right:-120px;top:-60px;width:320px;height:320px;background:radial-gradient(circle at 30% 30%, rgba(106,13,173,0.18), transparent 40%);transform:rotate(25deg);filter:blur(18px)}
+.home .hero h2{color:#4a0b4d;font-size:1.6rem}
+.home .lead{color:#4a0b4d}
+.home .quick-links{margin-top:12px}
+.home .quick-links .btn{background:linear-gradient(90deg,#8e44ff,#b99bff);color:#fff;border-radius:999px;padding:10px 16px;box-shadow:0 12px 30px rgba(140,100,220,0.08);text-decoration:none}
+.home .quick-links .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff}
+
+.home .resources{margin-top:18px}
+.home .site-footer{margin-top:22px;text-align:center;background:linear-gradient(90deg,#b893ff,#efeaff);padding:10px;border-radius:12px;color:#4a0b4d;box-shadow:0 8px 20px rgba(31,12,45,0.04)}
+
+@media (max-width:900px){
+  .home .header-grid{flex-direction:column;align-items:flex-start}
+  /* top-nav hidden on home; other pages still show it */
+  .home .top-nav{order:3;width:100%;justify-content:flex-start;flex-wrap:wrap}
+}
+
+@media (max-width:540px){
+  .home .nav-card{padding:8px 10px;font-size:14px}
+  .home .hero{padding:18px}
+  .home .hero::before{display:none}
+  .home .quick-links .btn{display:block;width:100%;text-align:center}
+  .home .quick-links .btn + .btn{margin-top:8px}
+}
+
+/* Per-pertmeeting grid on index page */
+.pertemuan-grid .grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+.pertemuan-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:6px;
+  padding:16px;
+  border-radius:12px;
+  background:linear-gradient(180deg,rgba(122,77,214,0.12),rgba(184,147,255,0.06));
+  border:1px solid rgba(122,77,214,0.08);
+  text-decoration:none;
+  color:#3b0b3e;
+  box-shadow:0 8px 20px rgba(106,13,173,0.04);
+}
+.pertemuan-card strong{font-size:15px;color:#4a0b4d}
+.pertemuan-card span{font-size:13px;color:var(--muted)}
+.pertemuan-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(106,13,173,0.08)}
+
+@media (max-width:540px){
+  .pertemuan-grid .grid{grid-template-columns:repeat(2,1fr)}
+  .pertemuan-card{padding:12px}
+}
+.site-footer{margin:18px 0 40px;text-align:center;color:rgba(255,255,255,0.9)}
+
+@media (max-width:900px){
+  .header-grid{flex-direction:column;align-items:flex-start}
+  .top-nav{flex-direction:row;gap:8px}
+}
+@media (max-width:720px){
+  .container{padding:12px}
+  .site-title{font-size:18px}
+  .page-actions{justify-content:center}
+}
+
+/* Table styling for pertemuan pages */
+.table-wrap{overflow-x:auto;margin:14px 0}
+.table-figure{margin:0}
+.info-table{width:100%;border-collapse:collapse;font-size:15px}
+.info-table caption{font-weight:700;text-align:left;padding:6px 0;color:#4a0b4d}
+.info-table th,.info-table td{padding:12px 14px;border-bottom:1px solid rgba(31,12,45,0.04);text-align:left}
+.info-table thead th{background:linear-gradient(90deg,#faf5ff,#fff);color:#4a0b4d;font-weight:700}
+
+/* Center header cells for .info-table (used in pertemuan-05) */
+.table-wrap .info-table thead th {
+  text-align: center;
+}
+
+/* Center first two data columns (Bahasa, Framework) for .info-table inside .table-wrap */
+.table-wrap .info-table td:nth-child(1),
+.table-wrap .info-table td:nth-child(2) {
+  text-align: center;
+}
+.info-table tbody tr:nth-child(odd){background:rgba(106,13,173,0.03)}
+.info-table tbody tr:hover{background:rgba(106,13,173,0.06)}
+.info-table th[scope="row"]{font-weight:700;color:#3b0b3e}
+
+@media (max-width:540px){
+  .info-table th,.info-table td{padding:10px}
+}
+
+/* Improve code display inside info-table and make examples readable */
+.info-table td code{background:#faf6ff;padding:6px 8px;border-radius:6px;border:1px solid rgba(107,54,138,0.06);display:inline-block}
+.info-table td:nth-child(3) code{font-family:"Roboto Mono", monospace;font-size:13px;color:#2b0633}
+.info-table caption{font-size:15px;color:#5a2b6a}
+
+/* Centered table helper used in pertemuan-04 */
+.table-wrap.centered{display:flex;justify-content:center}
+.table-wrap.centered table{width:min(880px,100%);border-collapse:collapse;background:var(--card);border-radius:8px;overflow:hidden}
+.table-wrap.centered th,.table-wrap.centered td{padding:12px 14px;border-bottom:1px solid rgba(31,12,45,0.04);text-align:left}
+.table-wrap.centered thead th{background:linear-gradient(90deg,#faf5ff,#fff);font-weight:700;color:#4a0b4d}
+
+@media (max-width:540px){
+  .table-wrap.centered th,.table-wrap.centered td{padding:10px;font-size:14px}
+}
+
+/* Center all cells for tables explicitly marked with .center-all inside .table-wrap.centered */
+.table-wrap.centered .center-all th,
+.table-wrap.centered .center-all td{
+  text-align:center;
+}
+
+/* For tables that only need centered headers: .center-headers */
+.table-wrap.centered .center-headers thead th{
+  text-align:center;
+}
+
+/* Center td cells that do NOT contain a <code> element (modern browsers support :has) */
+.table-wrap.centered .center-headers td:not(:has(code)){
+  text-align: center;
+}
+
+/* Fallback for browsers without :has(): center the 2nd column (the example column) */
+.table-wrap.centered .center-headers td:nth-child(2){
+  text-align: center;
+}
+
+/* Test case table styling */
+.testcase-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:15px;background:transparent}
+.testcase-table caption{font-weight:700;text-align:left;padding:6px 0;color:#4a0b4d}
+.testcase-table th,.testcase-table td{padding:12px 14px;border-bottom:1px solid rgba(31,12,45,0.04);vertical-align:top}
+.testcase-table thead th{background:linear-gradient(90deg,#faf5ff,#fff);color:#4a0b4d;font-weight:700}
+.testcase-table tbody tr:nth-child(odd){background:rgba(106,13,173,0.02)}
+.testcase-table tbody tr:hover{background:rgba(106,13,173,0.04)}
+.testcase-table td:first-child{text-align:center;font-weight:700}
+.testcase-table td:last-child{text-align:center}
+.testcase-table td.muted{color:var(--muted);text-align:center}
+/* Center second column (Test Case ID) across header and body */
+.testcase-table thead th:nth-child(2),
+.testcase-table td:nth-child(2) {
+  text-align: center;
+}
+
+.status-badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:800;font-size:13px}
+.status-badge.pass{background:linear-gradient(90deg,#b7f7d4,#b6f0c9);color:#0a4f2a}
+.status-badge.fail{background:linear-gradient(90deg,#ffd6d6,#ffc4c4);color:#5a0707}
+.status-badge.open{background:linear-gradient(90deg,#fff1b8,#ffe99a);color:#6a4b00}
+
+@media (max-width:640px){
+  .testcase-table thead th{font-size:14px}
+  .testcase-table td{padding:10px;font-size:14px}
+}
+
+/* Schedule table (pertemuan-03) */
+.schedule-table{width:100%;border-collapse:collapse;margin-top:8px}
+.schedule-table caption{font-weight:700;text-align:left;padding:6px 0;color:#4a0b4d}
+.schedule-table th,.schedule-table td{padding:12px;border-bottom:1px solid rgba(31,12,45,0.04)}
+.schedule-table thead th{background:#faf6ff;color:#4a0b4d;font-weight:700}
+.schedule-table tbody tr:nth-child(odd){background:rgba(148,91,190,0.03)}
+.schedule-table tbody tr:hover{background:rgba(148,91,190,0.06)}
+.schedule-table th[scope="row"]{width:6%;text-align:center}
+
+/* Title chip injected by script.js for pertemuan pages */
+.title-chip{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:2px;
+  margin-right:12px;
+}
+.title-chip .chip-main{
+  background:linear-gradient(90deg,#7a4dd6,#b893ff);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:13px;
+  box-shadow:0 8px 20px rgba(106,13,173,0.06);
+}
+.title-chip .chip-sub{
+  /* Hidden by default: use CSS to hide the small progress text */
+  display: none !important;
+  /* fallback styles kept in case you want to re-enable later */
+  font-size:11px;
+  color:rgba(58,20,71,0.6);
+  margin-top:2px;
+}
+
+@media (max-width:720px){
+  .title-chip{margin-bottom:6px}
+  .title-chip .chip-main{padding:6px 8px;font-size:12px}
+}
+.badge{display:inline-block;background:linear-gradient(90deg,#ffb6f1,#ffd7f8);color:#4a0830;padding:6px 8px;border-radius:999px;font-weight:700}
+.small.muted{font-size:13px;color:var(--muted);margin-top:6px}
+
+@media (max-width:540px){
+  .schedule-table th,.schedule-table td{padding:10px;font-size:14px}
+  .badge{padding:5px 7px;font-size:13px}
+}
+
+/* Components list (pertemuan-03) */
+.components-list{list-style:none;margin:12px 0;padding:0;display:grid;gap:12px}
+.component-item{background:rgba(255,255,255,0.98);border:1px solid rgba(31,12,45,0.04);padding:12px 14px;border-radius:10px;box-shadow:0 6px 18px rgba(31,12,45,0.04)}
+.component-title{margin:0 0 6px;color:#4a0b4d;font-size:16px}
+.component-desc{margin:0;color:var(--muted);font-size:14px}
+.component-desc code{background:#faf6ff;padding:2px 6px;border-radius:6px;border:1px solid rgba(107,54,138,0.06)}
+
+@media (max-width:640px){
+  .components-list{gap:10px}
+  .component-title{font-size:15px}
+}
+
+/* Feature list (pertemuan-06) */
+.feature-list{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}
+.feature-list li{position:relative;background:var(--card);padding:12px 14px 12px 56px;border-radius:10px;border:1px solid rgba(31,12,45,0.04);box-shadow:0 8px 24px rgba(31,12,45,0.06)}
+.feature-list li::before{content:"✓";position:absolute;left:14px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:linear-gradient(90deg,#ffb6f1,#ffd7f8);display:flex;align-items:center;justify-content:center;color:#4a0830;font-weight:800}
+.feature-list strong{display:block;margin:0 0 6px;color:#4a0b4d}
+.feature-list li{color:var(--muted)}
+
+@media (max-width:540px){
+  .feature-list li{padding-left:48px}
+  .feature-list li::before{left:10px;width:30px;height:30px}
+}
+
+/* Tools list (pertemuan-06) */
+.tools-list{list-style:none;margin:12px 0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.tools-list li{position:relative;background:var(--card);padding:18px 14px 12px 72px;border-radius:10px;border:1px solid rgba(31,12,45,0.04);box-shadow:0 8px 20px rgba(31,12,45,0.05);transition:transform .14s ease,box-shadow .14s ease}
+.tools-list li::before{content:"";position:absolute;left:14px;top:12px;transform:none;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#4a0830;font-weight:800;background:linear-gradient(90deg,#ffb6f1,#ffd7f8)}
+.tools-list li strong{display:block;margin:0 0 6px;color:#3b0b3e}
+.tools-list li{color:var(--muted)}
+.tools-list li:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(31,12,45,0.08)}
+
+/* assign simple emojis/icons per tool for quick visual cues */
+.tools-list li:nth-child(1)::before{content:"🧪"}
+.tools-list li:nth-child(2)::before{content:"📡"}
+.tools-list li:nth-child(3)::before{content:"⌨️"}
+.tools-list li:nth-child(4)::before{content:"🛠️"}
+
+@media (max-width:540px){
+  .tools-list{grid-template-columns:1fr}
+  .tools-list li{padding-left:60px}
+  .tools-list li::before{width:34px;height:34px;left:12px;top:10px}
+}
+
+/* Center only the header cells for ID Scenario, Deskripsi, Tujuan Pengujian in pertemuan-04 tables */
+.table-wrap.centered thead th:nth-child(1),
+.table-wrap.centered thead th:nth-child(2),
+.table-wrap.centered thead th:nth-child(3) {
+  text-align: center;
+}
+
+/* Optional: make ID column slightly narrower for better layout */
+.table-wrap.centered th:first-child{
+  width:12%;
+  white-space:nowrap;
+}

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pertemuan-07 — Pengantar Selenium WebDriver</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container">
+      <a href="index.html" class="back">← Kembali</a>
+      <h1 class="site-title">Pertemuan-07 — Pengantar Selenium WebDriver</h1>
+      <p class="site-sub">Otomatisasi pengujian antarmuka web menggunakan Selenium</p>
+    </div>
+  </header>
+
+  <main class="container content-card">
+    <article>
+      <h2>1. Apa itu Selenium dan Selenium WebDriver?</h2>
+      <p>
+        <strong>Selenium</strong> adalah sebuah framework open-source yang digunakan untuk otomatisasi pengujian aplikasi berbasis web.  
+        Selenium memungkinkan pengujian antarmuka pengguna (UI) secara otomatis di berbagai browser seperti Chrome, Firefox, dan Edge.
+      </p>
+      <p>
+        <strong>Selenium WebDriver</strong> merupakan komponen utama dari Selenium yang berfungsi untuk mengendalikan browser secara langsung melalui API.  
+        Dengan WebDriver, kita dapat membuka halaman web, mengisi formulir, menekan tombol, dan memverifikasi hasil — semuanya dilakukan secara otomatis.
+      </p>
+
+      <h2>2. Kenapa Harus Selenium?</h2>
+      <ul class="feature-list">
+        <li><strong>Gratis dan open-source:</strong> Mendukung berbagai bahasa seperti Python, Java, C#, dan JavaScript.</li>
+        <li><strong>Multi-browser:</strong> Bisa digunakan di Chrome, Firefox, Safari, dan Edge.</li>
+        <li><strong>Cross-platform:</strong> Dapat dijalankan di Windows, macOS, maupun Linux.</li>
+        <li><strong>Mendukung otomatisasi kompleks:</strong> Termasuk pengujian login, navigasi halaman, form, dan interaksi dinamis.</li>
+        <li><strong>Integrasi mudah:</strong> Dapat digabungkan dengan framework testing seperti Pytest atau JUnit untuk CI/CD pipeline.</li>
+      </ul>
+
+      <h2>3. Instalasi Selenium dengan Bahasa Pemrograman Python</h2>
+      <p>
+        Untuk memulai pengujian otomatis dengan Selenium di Python, ikuti langkah berikut:
+      </p>
+      <ol>
+        <li>Pastikan Python telah terinstal di sistem (<code>python --version</code>).</li>
+        <li>Instal library Selenium dengan perintah:
+          <pre><code>pip install selenium</code></pre>
+        </li>
+        <li>Unduh <strong>WebDriver</strong> yang sesuai dengan browser (contoh: ChromeDriver dari <a href="https://chromedriver.chromium.org/" target="_blank">chromedriver.chromium.org</a>).</li>
+        <li>Tempatkan file driver di lokasi yang mudah diakses, misalnya di folder proyek.</li>
+      </ol>
+
+      <h2>4. Membuka Browser dengan Selenium</h2>
+      <p>
+        Berikut contoh sederhana untuk membuka browser menggunakan Selenium:
+      </p>
+      <pre><code class="language-python">
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+# Membuka browser Chrome
+driver = webdriver.Chrome()
+
+# Membuka halaman web
+driver.get("https://www.google.com")
+
+# Menampilkan judul halaman
+print(driver.title)
+
+# Menutup browser
+driver.quit()
+      </code></pre>
+
+      <h2>5. Cara Berinteraksi dengan Elemen Halaman HTML</h2>
+      <p>
+        Selenium WebDriver dapat menemukan dan berinteraksi dengan elemen HTML menggunakan berbagai metode seperti <code>id</code>, <code>name</code>, <code>class</code>, <code>tag</code>, atau <code>xpath</code>.
+      </p>
+
+      <div class="table-wrap centered">
+  <table class="center-headers">
+          <thead>
+            <tr>
+              <th>Metode</th>
+              <th>Contoh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>find_element(By.ID, "username")</code></td>
+              <td>Mencari elemen berdasarkan atribut ID.</td>
+            </tr>
+            <tr>
+              <td><code>find_element(By.NAME, "password")</code></td>
+              <td>Mencari elemen berdasarkan atribut name.</td>
+            </tr>
+            <tr>
+              <td><code>find_element(By.CLASS_NAME, "login-button")</code></td>
+              <td>Mencari elemen berdasarkan class CSS.</td>
+            </tr>
+            <tr>
+              <td><code>find_element(By.XPATH, "//button[text()='Login']")</code></td>
+              <td>Mencari elemen berdasarkan path XML/HTML.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>6. Contoh Interaksi (Live Coding) Menggunakan Selenium WebDriver</h2>
+      <p>
+        Contoh berikut menunjukkan bagaimana Selenium digunakan untuk membuka halaman, mengisi form login, dan menekan tombol “Login”.
+      </p>
+
+      <pre><code class="language-python">
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+# Membuka browser dan menuju ke situs
+driver = webdriver.Chrome()
+driver.get("https://www.saucedemo.com/")
+
+# Menunggu beberapa detik agar halaman termuat
+time.sleep(2)
+
+# Mengisi username dan password
+driver.find_element(By.ID, "user-name").send_keys("standard_user")
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+
+# Menekan tombol Login
+driver.find_element(By.ID, "login-button").click()
+
+# Verifikasi bahwa halaman telah berpindah ke dashboard
+assert "inventory" in driver.current_url
+
+# Tutup browser
+driver.quit()
+      </code></pre>
+
+      <h2>7. Test Scenario dan Test Case — Situs https://www.saucedemo.com/</h2>
+
+      <h3>Test Scenario</h3>
+      <ul>
+        <li><strong>Scenario:</strong> Pengguna berhasil login ke aplikasi SauceDemo dengan kredensial valid.</li>
+        <li><strong>Precondition:</strong> Browser terbuka dan halaman login terbuka.</li>
+        <li><strong>Expected Result:</strong> Pengguna diarahkan ke halaman produk setelah login berhasil.</li>
+      </ul>
+
+      <h3>Test Case</h3>
+      <div class="table-wrap">
+        <table class="testcase-table">
+          <caption>Contoh Test Case — SauceDemo (Login)</caption>
+          <colgroup>
+            <col style="width:6%" />
+            <col style="width:14%" />
+            <col style="width:36%" />
+            <col style="width:12%" />
+            <col style="width:26%" />
+            <col style="width:6%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Test Case ID</th>
+              <th scope="col">Langkah Uji</th>
+              <th scope="col">Data Uji</th>
+              <th scope="col">Hasil yang Diharapkan</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>TC-LOGIN-001</td>
+              <td>Buka halaman <a href="https://www.saucedemo.com/" target="_blank">SauceDemo</a>.</td>
+              <td class="muted">-</td>
+              <td>Halaman login tampil dengan field username dan password.</td>
+              <td><span class="status-badge pass">Passed</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>TC-LOGIN-002</td>
+              <td>Masukkan username <code>standard_user</code> dan password <code>secret_sauce</code>.</td>
+              <td>Username dan Password valid</td>
+              <td>Login berhasil dan pengguna diarahkan ke halaman inventory.</td>
+              <td><span class="status-badge pass">Passed</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>TC-LOGIN-003</td>
+              <td>Masukkan username salah dan password benar.</td>
+              <td>Username tidak valid</td>
+              <td>Pesan error muncul: “Epic sadface: Username and password do not match.”</td>
+              <td><span class="status-badge pass">Passed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>8. Kesimpulan</h2>
+      <p>
+        Selenium WebDriver merupakan alat kuat untuk mengotomatisasi pengujian web.  
+        Dengan menggabungkannya bersama framework testing seperti <strong>Pytest</strong>,
+        kita dapat membuat pengujian berulang, cepat, dan andal.  
+        Contoh pada situs <a href="https://www.saucedemo.com/" target="_blank">SauceDemo</a>
+        menunjukkan bagaimana login otomatis dapat diuji menggunakan skrip sederhana.
+      </p>
+    </article>
+
+    <footer class="page-actions">
+      <a href="pertemuan-06.html" class="btn">← Sebelumnya: Pertemuan-06</a>
+      <a href="pertemuan-08.html" class="btn">Berikutnya: Pertemuan-08 →</a>
+    </footer>
+  </main>
+</body>
+</html>

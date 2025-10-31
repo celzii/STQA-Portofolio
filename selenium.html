@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Selenium WebDriver — STQA 2025</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container">
+      <a href="index.html" class="back">← Kembali</a>
+      <h1 class="site-title">Selenium WebDriver</h1>
+      <p class="site-sub">Automasi UI menggunakan Selenium (contoh Python)</p>
+    </div>
+  </header>
+
+  <main class="container content-card">
+    <article>
+      <h2>Apa itu Selenium?</h2>
+      <p>Selenium WebDriver adalah library untuk mengontrol browser secara otomatis — cocok untuk end-to-end tests.</p>
+
+      <h3>Langkah dasar (Python)</h3>
+      <ol>
+        <li>Instal: pip install selenium</li>
+        <li>Download driver (chromedriver / geckodriver) sesuai versi browser</li>
+        <li>Tulis script: buka halaman, temukan elemen, interaksi, asersi</li>
+      </ol>
+
+      <h3>Contoh Skrip</h3>
+      <pre><code class="lang-py">
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+driver = webdriver.Chrome()
+driver.get("http://localhost:8000")
+
+wait = WebDriverWait(driver, 10)
+weight = wait.until(EC.presence_of_element_located((By.ID, "weight")))
+height = driver.find_element(By.ID, "height")
+calc = driver.find_element(By.ID, "calculate")
+
+weight.send_keys("55")
+height.send_keys("165")
+calc.click()
+
+result = wait.until(EC.visibility_of_element_located((By.ID, "result")))
+assert "20.2" in result.text
+
+driver.quit()
+      </code></pre>
+
+      <h3>Tips Sinkronisasi</h3>
+      <ul>
+        <li>Gunakan explicit waits (WebDriverWait + expected_conditions) bukan sleep()</li>
+        <li>Gunakan page object pattern untuk maintainability</li>
+        <li>Jalankan tests headless di CI</li>
+      </ul>
+
+      <h3>Contoh Page Object (singkat)</h3>
+      <pre><code class="lang-py">
+class BmiPage:
+    def __init__(self, driver):
+        self.driver = driver
+    def open(self, url):
+        self.driver.get(url)
+    def set_weight(self, w): self.driver.find_element(By.ID,"weight").send_keys(str(w))
+    def set_height(self, h): self.driver.find_element(By.ID,"height").send_keys(str(h))
+    def calculate(self): self.driver.find_element(By.ID,"calculate").click()
+    def result_text(self): return self.driver.find_element(By.ID,"result").text
+      </code></pre>
+    </article>
+
+    <footer class="page-actions">
+      <a href="cypress.html" class="btn">Berikutnya: Cypress →</a>
+    </footer>
+  </main>
+</body>
+</html>

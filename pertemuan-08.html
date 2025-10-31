@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pertemuan-08 — Pengantar Cypress</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container">
+      <a href="index.html" class="back">← Kembali</a>
+      <h1 class="site-title">Pertemuan-08 — Pengantar Cypress</h1>
+      <p class="site-sub">Automasi pengujian web modern berbasis JavaScript</p>
+    </div>
+  </header>
+
+  <main class="container content-card">
+    <article>
+      <h2>1. Definisi Cypress</h2>
+      <p>
+        <strong>Cypress</strong> adalah framework pengujian end-to-end berbasis JavaScript yang digunakan untuk
+        menguji aplikasi web langsung di browser.  
+        Cypress memungkinkan pengembang melihat secara real-time setiap langkah pengujian, dari membuka halaman,
+        mengisi form, hingga memverifikasi hasil.
+      </p>
+      <p>
+        Berbeda dari Selenium, Cypress bekerja langsung di dalam browser (run-time environment) sehingga hasilnya lebih cepat dan stabil.
+      </p>
+
+      <h2>2. Keunggulan Cypress</h2>
+      <ul class="feature-list">
+        <li><strong>Arsitektur modern:</strong> Cypress berjalan langsung di browser, bukan melalui driver eksternal seperti Selenium.</li>
+        <li><strong>Test Runner interaktif:</strong> Menampilkan setiap langkah pengujian dan hasilnya secara visual.</li>
+        <li><strong>Time Travel:</strong> Fitur unik yang memungkinkan pengguna melihat kembali setiap langkah pengujian dengan screenshot otomatis.</li>
+        <li><strong>Realtime reload:</strong> Tes diperbarui secara otomatis saat kode diubah.</li>
+        <li><strong>Integrasi CI/CD mudah:</strong> Cypress mendukung pipeline otomatisasi seperti GitHub Actions, Jenkins, atau GitLab CI.</li>
+      </ul>
+
+      <h2>3. Instalasi Cypress via NPM/Yarn</h2>
+      <p>
+        Cypress dapat diinstal melalui <strong>NPM</strong> atau <strong>Yarn</strong>.  
+        Pastikan Node.js sudah terpasang terlebih dahulu.
+      </p>
+      <pre><code>
+# Instalasi menggunakan NPM
+npm install cypress --save-dev
+
+# Atau menggunakan Yarn
+yarn add cypress --dev
+      </code></pre>
+
+      <p>
+        Setelah instalasi berhasil, jalankan perintah berikut untuk membuka Test Runner:
+      </p>
+      <pre><code>npx cypress open</code></pre>
+
+      <h2>4. Struktur Tes di Cypress</h2>
+      <p>
+        Struktur file pengujian Cypress biasanya menggunakan pola <strong>describe–it</strong> yang mirip dengan framework testing lain.
+      </p>
+
+      <pre><code class="language-javascript">
+// contoh_test.cy.js
+describe('Judul Skenario Pengujian', () => {
+  it('Langkah uji pertama', () => {
+    // kode pengujian di sini
+  })
+})
+      </code></pre>
+
+      <ul>
+        <li><strong>describe()</strong> → digunakan untuk mengelompokkan skenario uji.</li>
+        <li><strong>it()</strong> → mendefinisikan satu kasus uji (test case).</li>
+      </ul>
+
+      <h2>5. Perintah Dasar Cypress</h2>
+      <div class="table-wrap">
+        <table class="info-table">
+          <caption>Perintah Dasar Cypress</caption>
+          <colgroup>
+            <col style="width:22%" />
+            <col style="width:48%" />
+            <col style="width:30%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Perintah</th>
+              <th scope="col">Deskripsi</th>
+              <th scope="col">Contoh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>cy.visit()</code></td>
+              <td>Membuka URL tertentu.</td>
+              <td><code>cy.visit('https://www.saucedemo.com/')</code></td>
+            </tr>
+            <tr>
+              <td><code>cy.get()</code></td>
+              <td>Mengambil elemen HTML berdasarkan selector.</td>
+              <td><code>cy.get('#user-name')</code></td>
+            </tr>
+            <tr>
+              <td><code>cy.type()</code></td>
+              <td>Mengetik teks ke dalam input field.</td>
+              <td><code>cy.get('#password').type('secret_sauce')</code></td>
+            </tr>
+            <tr>
+              <td><code>cy.click()</code></td>
+              <td>Mengklik elemen seperti tombol atau link.</td>
+              <td><code>cy.get('#login-button').click()</code></td>
+            </tr>
+            <tr>
+              <td><code>cy.contains()</code></td>
+              <td>Mencari elemen yang mengandung teks tertentu.</td>
+              <td><code>cy.contains('Products')</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>6. Studi Kasus: Login ke SauceDemo.com dengan Cypress</h2>
+      <p>
+        Berikut contoh skrip Cypress untuk menguji fitur login di situs
+        <a href="https://www.saucedemo.com/" target="_blank">SauceDemo</a>.
+      </p>
+
+      <pre><code class="language-javascript">
+// cypress/e2e/login_saucedemo.cy.js
+describe('Testing Login SauceDemo', () => {
+  it('Login berhasil dengan kredensial valid', () => {
+    cy.visit('https://www.saucedemo.com/')
+
+    // Mengisi username dan password
+    cy.get('#user-name').type('standard_user')
+    cy.get('#password').type('secret_sauce')
+
+    // Klik tombol login
+    cy.get('#login-button').click()
+
+    // Verifikasi halaman berhasil masuk
+    cy.url().should('include', '/inventory')
+    cy.contains('Products').should('be.visible')
+  })
+
+  it('Login gagal dengan password salah', () => {
+    cy.visit('https://www.saucedemo.com/')
+    cy.get('#user-name').type('standard_user')
+    cy.get('#password').type('wrong_password')
+    cy.get('#login-button').click()
+
+    // Verifikasi pesan error muncul
+    cy.get('[data-test="error"]').should('contain', 'Epic sadface')
+  })
+})
+      </code></pre>
+
+      <h2>7. Test Scenario dan Test Case — SauceDemo.com</h2>
+
+      <h3>Test Scenario</h3>
+      <ul>
+        <li><strong>Scenario:</strong> Memverifikasi proses login pada situs SauceDemo.</li>
+        <li><strong>Precondition:</strong> Browser terbuka dan halaman login aktif.</li>
+        <li><strong>Expected Result:</strong> Pengguna dapat login menggunakan kredensial valid dan ditolak jika salah.</li>
+      </ul>
+
+      <h3>Test Case</h3>
+      <div class="table-wrap">
+        <table class="testcase-table">
+          <caption>Contoh Test Case — SauceDemo (Cypress)</caption>
+          <colgroup>
+            <col style="width:6%" />
+            <col style="width:14%" />
+            <col style="width:36%" />
+            <col style="width:12%" />
+            <col style="width:26%" />
+            <col style="width:6%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Test Case ID</th>
+              <th scope="col">Langkah Uji</th>
+              <th scope="col">Data Uji</th>
+              <th scope="col">Hasil yang Diharapkan</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>TC-CYP-001</td>
+              <td>Buka halaman <a href="https://www.saucedemo.com/" target="_blank">SauceDemo</a>.</td>
+              <td class="muted">-</td>
+              <td>Halaman login tampil dengan field username dan password.</td>
+              <td><span class="status-badge pass">Passed</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>TC-CYP-002</td>
+              <td>Masukkan username <code>standard_user</code> dan password <code>secret_sauce</code>.</td>
+              <td>Data valid</td>
+              <td>Pengguna berhasil login dan diarahkan ke halaman produk.</td>
+              <td><span class="status-badge pass">Passed</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>TC-CYP-003</td>
+              <td>Masukkan username valid dan password salah.</td>
+              <td>Username valid, password salah</td>
+              <td>Pesan error muncul dan login gagal.</td>
+              <td><span class="status-badge pass">Passed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>8. Kesimpulan</h2>
+      <p>
+        <strong>Cypress</strong> menghadirkan cara baru dalam melakukan pengujian otomatis berbasis web dengan pendekatan yang cepat,
+        stabil, dan interaktif.  
+        Dengan fitur visual test runner dan integrasi langsung di browser,
+        Cypress menjadi pilihan utama untuk pengujian modern terutama pada aplikasi berbasis JavaScript.
+      </p>
+      <p>
+        Contoh pengujian di <a href="https://www.saucedemo.com/" target="_blank">SauceDemo</a> memperlihatkan betapa mudahnya melakukan uji login
+        menggunakan perintah sederhana seperti <code>cy.get()</code>, <code>cy.type()</code>, dan <code>cy.click()</code>.
+      </p>
+    </article>
+
+    <footer class="page-actions">
+      <a href="pertemuan-07.html" class="btn">← Sebelumnya: Pertemuan-07</a>
+    </footer>
+  </main>
+</body>
+</html>

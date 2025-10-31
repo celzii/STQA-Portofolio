@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pertemuan-06 — Pengantar API Testing</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container">
+      <a href="index.html" class="back">← Kembali</a>
+      <h1 class="site-title">Pertemuan-06 — Pengantar API Testing</h1>
+      <p class="site-sub">Memastikan integrasi antar sistem berjalan mulus melalui pengujian API</p>
+    </div>
+  </header>
+
+  <main class="container content-card">
+    <article>
+      <h2>1. Definisi API Testing</h2>
+      <p>
+        <strong>API (Application Programming Interface) Testing</strong> adalah proses pengujian untuk memverifikasi apakah
+        antarmuka pemrograman aplikasi (API) bekerja sesuai spesifikasi. Pengujian dilakukan untuk memastikan bahwa komunikasi
+        antara server dan client berjalan dengan benar, data ditransfer dengan akurat, dan respon yang diberikan sesuai harapan.
+      </p>
+      <p>
+        Tidak seperti UI testing yang berfokus pada tampilan, API testing menguji logika bisnis, fungsionalitas, keamanan,
+        dan performa dari layer backend sistem.
+      </p>
+
+      <h2>2. Keunggulan API Testing</h2>
+      <ul class="feature-list">
+        <li><strong>Lebih cepat dan efisien:</strong> Pengujian API dapat dilakukan tanpa melalui antarmuka pengguna (UI).</li>
+        <li><strong>Deteksi bug lebih awal:</strong> Kesalahan logika bisnis dapat ditemukan sebelum tahap integrasi UI.</li>
+        <li><strong>Stabil dan mudah diotomasi:</strong> API jarang berubah, sehingga cocok untuk pengujian otomatis (automation testing).</li>
+        <li><strong>Mendukung integrasi sistem:</strong> API testing memastikan koneksi antar aplikasi pihak ketiga berjalan baik.</li>
+        <li><strong>Meningkatkan keandalan layanan:</strong> Memastikan sistem backend memberikan respon yang benar dan konsisten.</li>
+      </ul>
+
+      <h2>3. Tools untuk API Testing</h2>
+      <p>
+        Beberapa alat yang umum digunakan untuk melakukan pengujian API antara lain:
+      </p>
+
+      <ul class="tools-list">
+        <li><strong>Postman:</strong> Alat populer dengan antarmuka grafis untuk mengirim permintaan (request) dan memeriksa respon API.</li>
+        <li><strong>SoapUI:</strong> Tool pengujian berbasis XML yang mendukung protokol SOAP dan REST.</li>
+        <li><strong>cURL:</strong> Alat berbasis command line untuk mengirim request HTTP secara manual.</li>
+        <li><strong>Insomnia:</strong> Alternatif Postman dengan antarmuka sederhana dan dukungan berbagai metode HTTP.</li>
+      </ul>
+
+      <h3>Postman sebagai Tool Utama</h3>
+      <p>
+        <strong>Postman</strong> memungkinkan pengembang atau penguji untuk membuat, mengirim, dan memverifikasi request API dengan mudah.
+        Fitur utamanya meliputi:
+      </p>
+      <ul>
+        <li>Antarmuka visual untuk membuat permintaan GET, POST, PUT, dan DELETE.</li>
+        <li>Dukungan environment variable (untuk URL, token, dan parameter dinamis).</li>
+        <li>Collection runner untuk eksekusi batch testing.</li>
+        <li>Integrasi otomatisasi dan scripting (Pre-request Script & Test Script).</li>
+      </ul>
+
+      <h2>4. Konsep Dasar: Anatomi Request & Response API</h2>
+      <p>
+        Dalam pengujian API, penting untuk memahami komponen dasar dari komunikasi HTTP yang melibatkan <strong>Request</strong> dan <strong>Response</strong>.
+      </p>
+
+      <h3>Bagian dari Request</h3>
+      <ul>
+        <li><strong>URL / Endpoint:</strong> Alamat API yang diakses, contoh: <code>https://api.example.com/users</code></li>
+        <li><strong>Method:</strong> Jenis operasi yang dilakukan, seperti:
+          <ul>
+            <li><code>GET</code> – Mengambil data</li>
+            <li><code>POST</code> – Mengirim data baru</li>
+            <li><code>PUT</code> – Memperbarui data</li>
+            <li><code>DELETE</code> – Menghapus data</li>
+          </ul>
+        </li>
+        <li><strong>Headers:</strong> Informasi tambahan (contoh: format konten, token otentikasi).</li>
+        <li><strong>Body:</strong> Data yang dikirim bersama request (biasanya dalam format JSON).</li>
+      </ul>
+
+      <h3>Bagian dari Response</h3>
+      <ul>
+        <li><strong>Status Code:</strong> Menunjukkan hasil dari request, contoh:
+          <ul>
+            <li><code>200 OK</code> – Permintaan berhasil.</li>
+            <li><code>201 Created</code> – Data berhasil dibuat.</li>
+            <li><code>400 Bad Request</code> – Format permintaan salah.</li>
+            <li><code>404 Not Found</code> – Endpoint tidak ditemukan.</li>
+            <li><code>500 Internal Server Error</code> – Kesalahan pada server.</li>
+          </ul>
+        </li>
+        <li><strong>Response Body:</strong> Isi balasan dari server (biasanya dalam format JSON).</li>
+        <li><strong>Headers:</strong> Metadata tambahan seperti tipe konten, waktu respon, dan server.</li>
+      </ul>
+
+      <h2>5. Operasi Dasar Menggunakan Postman</h2>
+      <ol>
+        <li>Buka Postman dan buat <strong>Request baru</strong>.</li>
+        <li>Pilih metode HTTP (misalnya <code>GET</code> atau <code>POST</code>).</li>
+        <li>Masukkan URL endpoint API, misalnya: <code>https://jsonplaceholder.typicode.com/posts</code>.</li>
+        <li>Jika menggunakan <code>POST</code>, pilih tab <strong>Body</strong> dan isi data dalam format JSON.</li>
+        <li>Klik <strong>Send</strong> untuk mengirim request dan lihat hasilnya pada tab <strong>Response</strong>.</li>
+      </ol>
+
+      <h3>Contoh Request GET</h3>
+      <pre><code>
+GET https://jsonplaceholder.typicode.com/posts/1
+      </code></pre>
+
+      <h3>Contoh Request POST</h3>
+      <pre><code class="language-json">
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+  "title": "Belajar API Testing",
+  "body": "API Testing membantu memastikan komunikasi antar sistem berjalan baik.",
+  "userId": 1
+}
+      </code></pre>
+
+      <h3>Contoh Response (JSON)</h3>
+      <pre><code class="language-json">
+{
+  "id": 101,
+  "title": "Belajar API Testing",
+  "body": "API Testing membantu memastikan komunikasi antar sistem berjalan baik.",
+  "userId": 1
+}
+      </code></pre>
+
+      <h2>6. Studi Kasus: Live Coding API Testing (GET & POST)</h2>
+      <p>
+        Studi kasus berikut menggunakan API publik <code>https://jsonplaceholder.typicode.com</code>.
+        API ini menyediakan data dummy yang dapat digunakan untuk latihan pengujian.
+      </p>
+
+      <h3>Langkah Pengujian GET</h3>
+      <ol>
+        <li>Buka Postman.</li>
+        <li>Buat request <strong>GET</strong> ke endpoint <code>/users</code>.</li>
+        <li>Klik <strong>Send</strong>.</li>
+        <li>Perhatikan bahwa respon berupa daftar pengguna dalam format JSON.</li>
+      </ol>
+
+      <h3>Langkah Pengujian POST</h3>
+      <ol>
+        <li>Buat request baru dengan metode <strong>POST</strong>.</li>
+        <li>Gunakan endpoint <code>/posts</code>.</li>
+        <li>Isi Body dengan format JSON, misalnya:</li>
+      </ol>
+
+      <pre><code class="language-json">
+{
+  "title": "Coba API POST",
+  "body": "Ini adalah contoh pengujian POST di Postman",
+  "userId": 2
+}
+      </code></pre>
+
+      <p>
+        Setelah menekan tombol <strong>Send</strong>, server akan mengembalikan respon dengan kode <code>201 Created</code>
+        dan JSON berisi data baru yang berhasil dibuat.
+      </p>
+
+      <h2>7. Kesimpulan</h2>
+      <p>
+        API Testing memastikan bahwa komunikasi antar sistem bekerja dengan benar, cepat, dan aman.
+        Dengan menggunakan alat seperti <strong>Postman</strong> atau <strong>SoapUI</strong>, penguji dapat memverifikasi
+        setiap endpoint API, mengukur kinerja, serta mengotomatiskan proses pengujian untuk integrasi yang andal.
+      </p>
+    </article>
+
+    <footer class="page-actions">
+      <a href="pertemuan-05.html" class="btn">← Sebelumnya: Pertemuan-05</a>
+      <a href="pertemuan-07.html" class="btn">Berikutnya: Pertemuan-07 →</a>
+    </footer>
+  </main>
+</body>
+</html>
