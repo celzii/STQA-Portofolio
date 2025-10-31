@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pertemuan-02 — UI/UX Testing</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container">
+      <a href="index.html" class="back">← Kembali</a>
+      <h1 class="site-title">Pertemuan-02 — UI/UX Testing</h1>
+      <p class="site-sub">Menilai antarmuka dan pengalaman pengguna untuk meningkatkan kualitas interaksi</p>
+    </div>
+  </header>
+
+  <main class="container content-card">
+    <article>
+      <h2>1. Definisi dan Perbedaan UI & UX Testing</h2>
+      <p>
+        <strong>UI (User Interface) Testing</strong> berfokus pada pengujian elemen tampilan visual dari aplikasi, seperti warna,
+        tata letak, ikon, dan tombol. Tujuannya memastikan bahwa antarmuka konsisten, responsif, dan mudah digunakan.
+      </p>
+      <p>
+        <strong>UX (User Experience) Testing</strong> menilai seberapa baik pengguna berinteraksi dengan sistem. Fokusnya pada kemudahan,
+        kepuasan, dan efektivitas pengguna dalam mencapai tujuannya.
+      </p>
+
+      <div class="table-wrap">
+        <figure class="table-figure">
+          <table class="info-table" summary="Perbandingan singkat antara UI Testing dan UX Testing">
+            <caption>Perbandingan singkat: UI vs UX Testing</caption>
+            <colgroup>
+              <col style="width:25%" />
+              <col style="width:37.5%" />
+              <col style="width:37.5%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">Aspek</th>
+                <th scope="col">UI Testing</th>
+                <th scope="col">UX Testing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Fokus</th>
+                <td>Visual dan tata letak antarmuka</td>
+                <td>Pengalaman dan kenyamanan pengguna</td>
+              </tr>
+              <tr>
+                <th scope="row">Tujuan</th>
+                <td>Menjamin elemen UI tampil dan berfungsi dengan benar</td>
+                <td>Menilai kepuasan dan kemudahan penggunaan sistem</td>
+              </tr>
+              <tr>
+                <th scope="row">Contoh</th>
+                <td>Uji tampilan tombol, warna, ikon</td>
+                <td>Uji alur kerja login hingga checkout</td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      </div>
+
+      <h2>2. Fokus Utama UI Testing</h2>
+      <ul>
+        <li><strong>Konsistensi Visual:</strong> Warna, font, ikon, dan tata letak harus seragam di seluruh halaman.</li>
+        <li><strong>Responsivitas:</strong> Tampilan menyesuaikan dengan berbagai ukuran layar (desktop, tablet, mobile).</li>
+        <li><strong>Kompatibilitas:</strong> UI berfungsi baik di semua browser dan sistem operasi.</li>
+      </ul>
+
+      <h3>Contoh UI Testing</h3>
+      <p>
+        Pengujian memastikan tombol “Kirim” berfungsi dengan baik di Chrome, Firefox, dan Edge, serta ukuran teks tidak berubah
+        saat layar diperkecil.
+      </p>
+
+      <h2>3. Fokus Utama UX Testing</h2>
+      <ul>
+        <li><strong>Alur Kerja (Workflow):</strong> Pengguna dapat menyelesaikan tugas dengan langkah yang efisien dan logis.</li>
+        <li><strong>Kegunaan (Usability):</strong> Sistem mudah dipahami tanpa panduan tambahan.</li>
+        <li><strong>Aksesibilitas:</strong> Sistem dapat digunakan oleh semua pengguna, termasuk penyandang disabilitas.</li>
+      </ul>
+
+      <h3>Contoh UX Testing</h3>
+      <p>
+        Pengujian dilakukan dengan meminta pengguna mendaftar akun dan mengamati apakah mereka memahami langkah-langkahnya tanpa bantuan.
+      </p>
+
+      <h2>4. Metode dan Tools untuk UI/UX Testing</h2>
+      <ul>
+        <li><strong>Manual Testing:</strong> Penguji menilai langsung antarmuka berdasarkan pengalaman penggunaan.</li>
+        <li><strong>A/B Testing:</strong> Dua versi desain dibandingkan untuk menentukan mana yang lebih efektif.</li>
+        <li><strong>Heatmaps:</strong> Menggunakan alat seperti <em>Hotjar</em> atau <em>Crazy Egg</em> untuk memantau area yang sering diklik pengguna.</li>
+      </ul>
+
+      <h3>Contoh Metode</h3>
+      <p>
+        Pada A/B testing, dua varian halaman checkout diuji pada kelompok pengguna berbeda untuk melihat versi mana yang menghasilkan tingkat pembelian lebih tinggi.
+      </p>
+
+      <h2 id="heuristic-evaluation">5. Heuristic Evaluation (Evaluasi Heuristik)</h2>
+      <p class="lead">Heuristic Evaluation adalah metode penilaian usability cepat yang populer, dikembangkan oleh <strong>Jakob Nielsen</strong>. Biasanya beberapa evaluator independen menilai antarmuka terhadap prinsip-prinsip heuristik untuk menemukan masalah kegunaan tanpa harus melakukan tes pengguna penuh.</p>
+
+      <section class="heuristics">
+        <h3>10 Prinsip Usability Jakob Nielsen</h3>
+        <ol class="heuristic-list">
+          <li>
+            <h4>Visibility of System Status</h4>
+            <p>Sistem harus selalu memberi tahu pengguna apa yang sedang terjadi — contoh: indikator loading, konfirmasi aksi, atau pesan error.</p>
+          </li>
+
+          <li>
+            <h4>Match Between System and the Real World</h4>
+            <p>Gunakan bahasa, metafora, dan alur yang akrab bagi pengguna sehingga antarmuka terasa alami dan mudah dimengerti.</p>
+          </li>
+
+          <li>
+            <h4>User Control and Freedom</h4>
+            <p>Berikan cara mudah untuk membatalkan atau kembali dari tindakan yang tidak diinginkan (undo, back, cancel).</p>
+          </li>
+
+          <li>
+            <h4>Consistency and Standards</h4>
+            <p>Pertahankan konsistensi pada istilah, tata letak, dan interaksi agar pengguna tidak bingung saat berpindah konteks.</p>
+          </li>
+
+          <li>
+            <h4>Error Prevention</h4>
+            <p>Rancang antarmuka untuk mencegah kesalahan — mis. validasi input real-time, konfirmasi aksi berisiko.</p>
+          </li>
+
+          <li>
+            <h4>Recognition Rather Than Recall</h4>
+            <p>Desain supaya pengguna lebih banyak mengenali pilihan daripada harus mengingat (menu, ikon, petunjuk yang jelas).</p>
+          </li>
+
+          <li>
+            <h4>Flexibility and Efficiency of Use</h4>
+            <p>Sediakan jalan pintas dan mode lanjutan bagi pengguna berpengalaman tanpa membingungkan pemula.</p>
+          </li>
+
+          <li>
+            <h4>Aesthetic and Minimalist Design</h4>
+            <p>Hindari informasi yang tidak relevan; desain minimal membantu pengguna fokus pada tugas utama.</p>
+          </li>
+
+          <li>
+            <h4>Help Users Recognize, Diagnose, and Recover from Errors</h4>
+            <p>Pesan error harus jelas, sopan, dan menyediakan langkah perbaikan (what happened & how to fix it).</p>
+          </li>
+
+          <li>
+            <h4>Help and Documentation</h4>
+            <p>Sediakan dokumentasi, tooltips, atau help center yang mudah diakses untuk kasus-kasus yang kompleks.</p>
+          </li>
+        </ol>
+
+        <aside class="note">
+          <p><strong>Tip:</strong> Saat melakukan Heuristic Evaluation, catat severity (low/medium/high) untuk setiap issue agar mudah prioritas perbaikan.</p>
+        </aside>
+      </section>
+
+      <h2>6. Kesimpulan</h2>
+      <p>
+        UI/UX Testing membantu memastikan bahwa perangkat lunak tidak hanya berfungsi dengan baik tetapi juga memberikan pengalaman
+        yang menyenangkan bagi pengguna. UI memastikan tampilan konsisten dan responsif, sedangkan UX memastikan alur kerja intuitif
+        dan kepuasan pengguna tinggi. Dengan pendekatan seperti A/B Testing, Heatmaps, dan Evaluasi Heuristik, kualitas pengalaman
+        pengguna dapat ditingkatkan secara signifikan.
+      </p>
+    </article>
+
+    <footer class="page-actions">
+      <a href="pertemuan-01.html" class="btn">← Sebelumnya: Pertemuan-01</a>
+      <a href="pertemuan-03.html" class="btn">Berikutnya: Pertemuan-03 →</a>
+    </footer>
+  </main>
+</body>
+</html>
