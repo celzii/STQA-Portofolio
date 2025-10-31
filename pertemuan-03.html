@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pertemuan-03 — Testing Plan</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container">
+      <a href="index.html" class="back">← Kembali</a>
+      <h1 class="site-title">Pertemuan-03 — Testing Plan</h1>
+      <p class="site-sub">Dokumentasi perencanaan pengujian perangkat lunak berdasarkan standar IEEE 829</p>
+    </div>
+  </header>
+
+  <main class="container content-card">
+    <article>
+      <h2>1. Pengantar Testing Plan</h2>
+      <p>
+        <strong>Testing Plan</strong> atau <em>rencana pengujian</em> adalah dokumen formal yang menjelaskan strategi, ruang lingkup,
+        jadwal, sumber daya, dan tanggung jawab dalam melaksanakan pengujian perangkat lunak.
+        Dokumen ini menjadi panduan utama bagi tim QA untuk memastikan semua komponen sistem diuji secara menyeluruh
+        dan sesuai standar kualitas yang diharapkan.
+      </p>
+
+      <h3>Tujuan Testing Plan</h3>
+      <ul>
+        <li>Memberikan panduan sistematis untuk seluruh proses pengujian.</li>
+        <li>Menentukan ruang lingkup, prioritas, dan fokus pengujian.</li>
+        <li>Mengidentifikasi kebutuhan sumber daya (alat, tenaga, waktu).</li>
+        <li>Menetapkan jadwal dan tanggung jawab tim penguji.</li>
+        <li>Mendokumentasikan risiko dan strategi mitigasinya.</li>
+      </ul>
+
+      <h2>2. Komponen Testing Plan (IEEE 829)</h2>
+      <p>
+        Standar <strong>IEEE 829</strong> menyediakan struktur dokumentasi untuk proses pengujian perangkat lunak.
+        Berikut adalah elemen penting yang disertakan dalam dokumen Testing Plan:
+      </p>
+
+      <p class="lead">Berikut ringkasan komponen penting yang biasa ada pada sebuah <strong>Test Plan</strong> menurut format IEEE 829. Tiap item berisi nama komponen dan deskripsi singkat agar mudah dipahami dan digunakan saat menyusun dokumen.</p>
+
+      <ol class="components-list">
+        <li class="component-item">
+          <h4 class="component-title">Test Plan Identifier</h4>
+          <p class="component-desc">Nomor identifikasi dokumen untuk referensi (contoh: <code>TP-BMI-001</code>).</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Introduction</h4>
+          <p class="component-desc">Pendahuluan yang menjelaskan latar belakang proyek, tujuan pengujian, dan konteks dokumen.</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Test Items</h4>
+          <p class="component-desc">Daftar modul atau komponen yang akan diuji (mis. input, perhitungan, antarmuka hasil BMI).</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Features to be Tested</h4>
+          <p class="component-desc">Fitur-fitur yang termasuk dalam lingkup pengujian dan harus mendapat perhatian khusus.</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Features Not to be Tested</h4>
+          <p class="component-desc">Fitur atau area yang dikecualikan dari pengujian pada fase ini (scope out).</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Approach</h4>
+          <p class="component-desc">Metode dan teknik pengujian yang dipakai (mis. <em>Black Box</em>, <em>White Box</em>, exploratory, automation strategy).</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Item Pass/Fail Criteria</h4>
+          <p class="component-desc">Kriteria kuantitatif atau kualitatif untuk menentukan apakah item dianggap lulus atau gagal.</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Suspension and Resumption Criteria</h4>
+          <p class="component-desc">Kondisi yang menyebabkan pengujian dihentikan sementara dan kapan dapat dilanjutkan.</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Test Deliverables</h4>
+          <p class="component-desc">Dokumen & artefak yang harus dihasilkan (test plan, test cases, bug reports, summary report).</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Testing Tasks</h4>
+          <p class="component-desc">Daftar tugas rinci yang perlu diselesaikan selama fase pengujian (penjadwalan, eksekusi, reporting).</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Environmental Needs</h4>
+          <p class="component-desc">Kebutuhan lingkungan pengujian: hardware, software, data, dan konfigurasi yang diperlukan.</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Responsibilities</h4>
+          <p class="component-desc">Pembagian peran dan tanggung jawab antar anggota tim (siapa melakukan apa).</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Schedule</h4>
+          <p class="component-desc">Timeline pelaksanaan pengujian, milestone, dan batas waktu penting.</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Risks and Contingencies</h4>
+          <p class="component-desc">Risiko potensial yang mungkin mempengaruhi pengujian dan rencana mitigasinya.</p>
+        </li>
+
+        <li class="component-item">
+          <h4 class="component-title">Approvals</h4>
+          <p class="component-desc">Persetujuan resmi dari pemangku kepentingan yang diperlukan untuk finalisasi test plan.</p>
+        </li>
+      </ol>
+
+      <h2>3. Contoh Testing Plan Sederhana (IEEE 829)</h2>
+      <p>
+        Berikut contoh penerapan Testing Plan menggunakan skenario aplikasi sederhana
+        <em>pengukuran Body Mass Index (BMI)</em>:
+      </p>
+
+      <section class="example">
+        <h3>Judul:</h3>
+        <p><strong>Testing Plan Aplikasi Pengukuran BMI</strong></p>
+
+        <h3>Pendahuluan:</h3>
+        <p>
+          Aplikasi BMI dirancang untuk menghitung indeks massa tubuh berdasarkan berat (kg)
+          dan tinggi (cm) yang dimasukkan pengguna, lalu menampilkan kategori hasil seperti
+          <em>Underweight</em>, <em>Normal</em>, <em>Overweight</em>, dan <em>Obese</em>.
+        </p>
+
+        <h3>Ruang Lingkup Pengujian:</h3>
+        <ul>
+          <li>Validasi input berat badan dan tinggi badan.</li>
+          <li>Akurasi perhitungan nilai BMI.</li>
+          <li>Kesesuaian kategori hasil dengan rumus standar WHO.</li>
+        </ul>
+
+        <h3>Metode Pengujian:</h3>
+        <p>Menggunakan pendekatan <strong>Black Box Testing</strong> dengan teknik <em>Functional Testing</em>.</p>
+
+        <h3>Kriteria Lulus/Gagal:</h3>
+        <ul>
+          <li><strong>Lulus:</strong> Hasil perhitungan BMI dan kategori sesuai rumus.</li>
+          <li><strong>Gagal:</strong> Nilai BMI salah atau kategori tidak sesuai.</li>
+        </ul>
+
+        <h3>Lingkungan Pengujian:</h3>
+        <ul>
+          <li>Sistem Operasi: Windows 10</li>
+          <li>Bahasa Pemrograman: Python</li>
+          <li>Framework GUI: Tkinter</li>
+        </ul>
+
+        <h3>Jadwal:</h3>
+        
+        <div class="table-wrap">
+          <figure class="table-figure">
+            <table class="schedule-table" summary="Jadwal pengujian: tahap, kegiatan, dan waktu pelaksanaan">
+              <caption>Jadwal Pelaksanaan Pengujian</caption>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:60%">
+                <col style="width:30%">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">Tahap</th>
+                  <th scope="col">Kegiatan</th>
+                  <th scope="col">Waktu</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><span class="badge">1</span></th>
+                  <td>Persiapan lingkungan pengujian</td>
+                  <td><time datetime="2025-11-01">1 Nov 2025</time> – <time datetime="2025-11-02">2 Nov 2025</time></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="badge">2</span></th>
+                  <td>Pelaksanaan pengujian</td>
+                  <td><time datetime="2025-11-03">3 Nov 2025</time> – <time datetime="2025-11-04">4 Nov 2025</time></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="badge">3</span></th>
+                  <td>Pembuatan laporan hasil</td>
+                  <td><time datetime="2025-11-05">5 Nov 2025</time></td>
+                </tr>
+              </tbody>
+            </table>
+            <figcaption class="small muted">Catatan: tanggal dapat berubah sesuai timeline proyek.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <h2>4. Kesimpulan</h2>
+      <p>
+        Testing Plan berfungsi sebagai dokumen pedoman yang mengatur seluruh proses pengujian perangkat lunak.
+        Dengan mengikuti struktur <strong>IEEE 829</strong>, tim QA dapat memastikan bahwa semua aspek pengujian
+        tercatat secara sistematis, risiko dapat diminimalkan, dan hasil pengujian dapat dipertanggungjawabkan secara akademik maupun profesional.
+      </p>
+    </article>
+
+    <footer class="page-actions">
+      <a href="pertemuan-02.html" class="btn">← Sebelumnya: Pertemuan-02</a>
+      <a href="pertemuan-04.html" class="btn">Berikutnya: Pertemuan-04 →</a>
+    </footer>
+  </main>
+</body>
+</html>
