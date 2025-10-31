@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pertemuan-04 — Test Scenario, Test Case, and Bug Report</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container">
+      <a href="index.html" class="back">← Kembali</a>
+      <h1 class="site-title">Pertemuan-04 — Test Scenario, Test Case, and Bug Report</h1>
+      <p class="site-sub">Mendokumentasikan pengujian perangkat lunak secara terstruktur dan profesional</p>
+    </div>
+  </header>
+
+  <main class="container content-card">
+    <article>
+      <h2>1. Pengantar</h2>
+      <p>
+        Dalam pengujian perangkat lunak, dokumentasi yang baik sangat penting untuk memastikan seluruh fitur telah diuji secara sistematis.
+        Dua dokumen utama dalam proses tersebut adalah <strong>Test Scenario</strong> dan <strong>Test Case</strong>,
+        sementara <strong>Bug Report</strong> digunakan untuk mencatat kesalahan yang ditemukan selama pengujian.
+      </p>
+
+      <h2>2. Pengertian Test Scenario dan Test Case</h2>
+      <ul>
+        <li>
+          <strong>Test Scenario</strong> adalah gambaran umum dari suatu proses atau alur pengujian untuk memastikan fungsi sistem bekerja sesuai kebutuhan.
+          Scenario menjawab pertanyaan <em>"Apa yang akan diuji?"</em>.
+        </li>
+        <li>
+          <strong>Test Case</strong> adalah langkah-langkah rinci yang dilakukan untuk menguji suatu skenario.
+          Test case menjawab pertanyaan <em>"Bagaimana pengujiannya dilakukan?"</em>.
+        </li>
+      </ul>
+
+      <h3>Tujuan Pembuatan Test Scenario dan Test Case</h3>
+      <ul>
+        <li>Menjamin setiap fungsi sistem diuji dengan cara yang konsisten dan dapat diulang.</li>
+        <li>Memastikan pengujian mencakup semua kebutuhan fungsional perangkat lunak.</li>
+        <li>Mempermudah pelacakan bug dan validasi hasil perbaikan.</li>
+      </ul>
+
+      <h2>3. Template Sederhana Test Scenario & Test Case</h2>
+      <p>Berikut contoh format sederhana yang dapat digunakan untuk mendokumentasikan pengujian:</p>
+
+      <h3>Contoh Template Test Scenario</h3>
+      <div class="table-wrap centered">
+        <table>
+          <thead>
+            <tr>
+              <th>ID Scenario</th>
+              <th>Deskripsi</th>
+              <th>Tujuan Pengujian</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TS-001</td>
+              <td>Menghitung nilai BMI berdasarkan input berat dan tinggi</td>
+              <td>Memastikan sistem dapat menghitung BMI dengan benar</td>
+            </tr>
+            <tr>
+              <td>TS-002</td>
+              <td>Menampilkan kategori hasil BMI</td>
+              <td>Memastikan hasil BMI sesuai klasifikasi WHO</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Contoh Template Test Case</h3>
+      <div class="table-wrap centered">
+        <table class="center-all">
+          <thead>
+            <tr>
+              <th>ID Case</th>
+              <th>ID Scenario</th>
+              <th>Langkah Pengujian</th>
+              <th>Data Uji</th>
+              <th>Hasil yang Diharapkan</th>
+              <th>Hasil Aktual</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TC-001</td>
+              <td>TS-001</td>
+              <td>Masukkan berat = 60 kg dan tinggi = 165 cm, lalu klik “Hitung”</td>
+              <td>60, 165</td>
+              <td>Menampilkan hasil BMI = 22.04</td>
+              <td>22.04</td>
+              <td>Lulus</td>
+            </tr>
+            <tr>
+              <td>TC-002</td>
+              <td>TS-002</td>
+              <td>Input berat = 85 kg dan tinggi = 160 cm, lalu klik “Hitung”</td>
+              <td>85, 160</td>
+              <td>Menampilkan kategori = “Obese”</td>
+              <td>Obese</td>
+              <td>Lulus</td>
+            </tr>
+            <tr>
+              <td>TC-003</td>
+              <td>TS-001</td>
+              <td>Masukkan nilai tinggi kosong dan tekan “Hitung”</td>
+              <td>60, (kosong)</td>
+              <td>Menampilkan pesan error “Tinggi badan tidak boleh kosong”</td>
+              <td>Tidak menampilkan pesan</td>
+              <td>Gagal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>4. Pengertian Bug Report</h2>
+      <p>
+        <strong>Bug Report</strong> adalah dokumen yang berisi deskripsi terperinci tentang kesalahan atau cacat (bug) yang ditemukan selama pengujian.
+        Tujuannya agar tim pengembang dapat mereproduksi dan memperbaiki bug dengan cepat.
+      </p>
+
+      <h3>Informasi yang Harus Ada dalam Bug Report</h3>
+      <ul>
+        <li>ID unik untuk setiap bug.</li>
+        <li>Judul atau ringkasan singkat bug.</li>
+        <li>Langkah-langkah untuk mereproduksi bug.</li>
+        <li>Hasil aktual dan hasil yang diharapkan.</li>
+        <li>Tingkat keparahan (severity) dan prioritas.</li>
+        <li>Lingkungan pengujian (OS, browser, versi aplikasi).</li>
+        <li>Status bug (baru, diperbaiki, diverifikasi, ditutup).</li>
+      </ul>
+
+      <h3>Contoh Format Bug Report</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Bug</th>
+            <th>Judul</th>
+            <th>Deskripsi</th>
+            <th>Langkah Reproduksi</th>
+            <th>Hasil Aktual</th>
+            <th>Hasil Diharapkan</th>
+            <th>Severity</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BUG-001</td>
+            <td>Pesan error tidak muncul saat input kosong</td>
+            <td>Pengguna tidak menerima peringatan ketika kolom tinggi dibiarkan kosong.</td>
+            <td>Masukkan berat = 60, biarkan tinggi kosong, tekan “Hitung”.</td>
+            <td>Aplikasi tetap memproses tanpa pesan error.</td>
+            <td>Sistem menampilkan pesan “Tinggi badan tidak boleh kosong”.</td>
+            <td>Medium</td>
+            <td>Open</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>5. Kesimpulan</h2>
+      <p>
+        Test Scenario dan Test Case merupakan fondasi dokumentasi dalam proses pengujian perangkat lunak.
+        Dengan menulis skenario dan kasus uji yang baik, tim dapat menguji sistem secara menyeluruh dan mengurangi risiko kesalahan.
+        Sementara itu, Bug Report berfungsi sebagai alat komunikasi utama antara penguji dan pengembang dalam memperbaiki kualitas aplikasi.
+      </p>
+    </article>
+
+    <footer class="page-actions">
+      <a href="pertemuan-03.html" class="btn">← Sebelumnya: Pertemuan-03</a>
+      <a href="pertemuan-05.html" class="btn">Berikutnya: Pertemuan-05 →</a>
+    </footer>
+  </main>
+</body>
+</html>
