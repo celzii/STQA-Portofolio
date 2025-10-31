@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pertemuan-05 — Pengantar Unit Testing</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container">
+      <a href="index.html" class="back">← Kembali</a>
+      <h1 class="site-title">Pertemuan-05 — Pengantar Unit Testing</h1>
+      <p class="site-sub">Menguji komponen kecil untuk menjamin kualitas besar</p>
+    </div>
+  </header>
+
+  <main class="container content-card">
+    <article>
+      <h2>1. Definisi Unit Testing</h2>
+      <p>
+        <strong>Unit Testing</strong> adalah proses pengujian terhadap bagian terkecil dari kode program,
+        biasanya berupa fungsi, metode, atau modul, untuk memastikan bahwa setiap unit bekerja dengan benar
+        sesuai dengan desain dan kebutuhan yang ditetapkan.
+      </p>
+      <p>
+        Tujuan utama unit testing adalah mendeteksi kesalahan sejak dini dalam tahap pengembangan sebelum kode digabungkan
+        ke dalam sistem yang lebih besar.
+      </p>
+
+      <h2>2. Keunggulan Unit Testing</h2>
+      <ul>
+        <li><strong>Deteksi dini bug:</strong> Kesalahan ditemukan lebih cepat sebelum menjadi masalah besar.</li>
+        <li><strong>Mempermudah debugging:</strong> Unit testing membantu mengisolasi area yang menyebabkan error.</li>
+        <li><strong>Meningkatkan kualitas kode:</strong> Pengembang terdorong untuk menulis kode yang modular dan mudah diuji.</li>
+        <li><strong>Mendukung perubahan (refactoring):</strong> Pengujian otomatis memastikan fungsi lama tetap berjalan saat kode diperbarui.</li>
+        <li><strong>Meningkatkan kepercayaan terhadap sistem:</strong> Setiap bagian telah diverifikasi secara individual sebelum digabungkan.</li>
+      </ul>
+
+      <h2>3. Framework & Tools untuk Unit Testing</h2>
+      <p>
+        Berbagai bahasa pemrograman memiliki framework yang memudahkan proses unit testing. Berikut adalah beberapa yang paling populer:
+      </p>
+
+      <div class="table-wrap">
+        <table class="info-table">
+          <caption>Framework Unit Testing Populer</caption>
+          <colgroup>
+            <col style="width:20%" />
+            <col style="width:25%" />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Bahasa Pemrograman</th>
+              <th scope="col">Framework Unit Test</th>
+              <th scope="col">Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Java</td>
+              <td>JUnit</td>
+              <td>Framework unit test paling umum di Java, mendukung automasi dan integrasi CI/CD.</td>
+            </tr>
+            <tr>
+              <td>Python</td>
+              <td>Pytest</td>
+              <td>Framework sederhana dengan fitur kuat, mudah digunakan, dan mendukung fixture & plugin.</td>
+            </tr>
+            <tr>
+              <td>JavaScript</td>
+              <td>Jest</td>
+              <td>Framework testing modern untuk aplikasi berbasis Node.js dan React.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>4. Struktur Tes: Pola Arrange – Act – Assert (AAA)</h2>
+      <p>
+        Struktur paling umum dalam menulis unit test adalah pola <strong>AAA</strong>:
+      </p>
+      <ul>
+        <li><strong>Arrange:</strong> Menyiapkan kondisi awal dan data yang dibutuhkan untuk pengujian.</li>
+        <li><strong>Act:</strong> Menjalankan fungsi atau kode yang akan diuji.</li>
+        <li><strong>Assert:</strong> Memverifikasi bahwa hasil aktual sesuai dengan hasil yang diharapkan.</li>
+      </ul>
+
+      <pre><code class="language-python">
+# Contoh pola AAA dalam Pytest
+def test_penjumlahan():
+    # Arrange
+    a = 5
+    b = 3
+
+    # Act
+    hasil = a + b
+
+    # Assert
+    assert hasil == 8
+</code></pre>
+
+      <h2>5. Assertions</h2>
+      <p>
+        <strong>Assertion</strong> adalah pernyataan yang digunakan dalam pengujian untuk memverifikasi hasil aktual
+        dengan hasil yang diharapkan. Jika pernyataan ini salah, maka pengujian dianggap gagal.
+      </p>
+
+      <h3>Contoh Assertions Umum (Pytest)</h3>
+      <ul>
+        <li><code>assert hasil == nilai_ekspektasi</code> → memeriksa kesamaan nilai.</li>
+        <li><code>assert x in daftar</code> → memastikan elemen ada dalam koleksi.</li>
+        <li><code>assert isinstance(obj, ClassName)</code> → memastikan tipe data benar.</li>
+        <li><code>assert not kondisi</code> → memastikan kondisi bernilai salah.</li>
+      </ul>
+
+      <h2>6. Studi Kasus: Unit Test Aplikasi BMI (Python & Pytest)</h2>
+      <p>
+        Misalkan terdapat fungsi sederhana untuk menghitung nilai BMI berdasarkan berat dan tinggi badan.
+        Berikut contoh implementasi dan unit test menggunakan <strong>Pytest</strong>:
+      </p>
+
+      <pre><code class="language-python">
+# bmi.py
+def hitung_bmi(berat, tinggi):
+    if tinggi <= 0:
+        raise ValueError("Tinggi harus lebih dari 0")
+    bmi = berat / ((tinggi / 100) ** 2)
+    return round(bmi, 2)
+
+# test_bmi.py
+from bmi import hitung_bmi
+
+def test_bmi_normal():
+    # Arrange
+    berat = 60
+    tinggi = 165
+
+    # Act
+    hasil = hitung_bmi(berat, tinggi)
+
+    # Assert
+    assert hasil == 22.04
+
+def test_bmi_invalid_tinggi():
+    # Arrange
+    berat = 60
+    tinggi = 0
+
+    # Act & Assert
+    try:
+        hitung_bmi(berat, tinggi)
+    except ValueError as e:
+        assert str(e) == "Tinggi harus lebih dari 0"
+</code></pre>
+
+      <p>
+        Hasil pengujian akan menampilkan dua status: <strong>Passed</strong> (uji berhasil) atau <strong>Failed</strong> (uji gagal),
+        tergantung dari kesesuaian hasil aktual dengan ekspektasi. Pytest dapat dijalankan dengan perintah:
+      </p>
+
+      <pre><code>pytest test_bmi.py</code></pre>
+
+      <h2>7. Kesimpulan</h2>
+      <p>
+        Unit Testing merupakan tahap penting untuk menjamin bahwa setiap bagian kecil dari sistem bekerja dengan benar.
+        Dengan framework seperti Pytest, JUnit, atau Jest, pengujian dapat dilakukan secara otomatis, cepat, dan efisien.
+        Pola <strong>Arrange–Act–Assert</strong> serta penggunaan assertion membantu menjaga struktur pengujian tetap jelas
+        dan mudah dipelihara dalam proyek perangkat lunak berskala besar.
+      </p>
+    </article>
+
+    <footer class="page-actions">
+      <a href="pertemuan-04.html" class="btn">← Sebelumnya: Pertemuan-04</a>
+      <a href="pertemuan-06.html" class="btn">Berikutnya: Pertemuan-06 →</a>
+    </footer>
+  </main>
+</body>
+</html>
